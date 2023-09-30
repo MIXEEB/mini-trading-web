@@ -1,0 +1,18 @@
+.pixel-button {
+  display: inline-block;
+  padding: 8px 16px;
+  font-family: 'Pixel-Font';
+  font-size: 16px; 
+  text-align: center;
+  background-color: #1e1e1e;
+  color: #ff8c00;
+  border: 2px solid #ff8c00;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pixel-button:disabled {
+  cursor: default;
+  color: grey;
+  border: 2px solid grey;
+}

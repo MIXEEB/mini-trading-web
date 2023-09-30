@@ -1,0 +1,5 @@
+<div class="miniature-card">
+  <pixel-span [text]="miniatureData.name"></pixel-span>
+  <img [src]="miniatureData.miniatureUrl"/>
+  <pixel-button [text]="'Buy'" (clickButton)="buy.emit(miniatureData)"></pixel-button>
+</div>

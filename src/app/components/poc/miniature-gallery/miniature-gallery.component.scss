@@ -1,0 +1,26 @@
+.miniature-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Optional styles for gallery items */
+.gallery-item {
+  flex: 1; /* Allow items to grow and shrink to fill available space */
+  max-width: calc(33.33% - 20px); /* Maximum width of each item */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  overflow: hidden; /* Hide overflow content */
+  border: 1px solid #ccc; /* Border style for individual items */
+  border-radius: 5px; /* Rounded corners for individual items */
+}
+
+/* Optional styles for gallery images */
+.gallery-image {
+  width: 100%; /* Ensure images fill their parent container */
+  height: auto; /* Maintain the aspect ratio of images */
+}

@@ -1,0 +1,7 @@
+<div class="miniature-url-selector">
+  <img *ngFor="let miniatureUrl of miniatureUrls"
+    [ngClass]="{'selected': miniatureUrl === selectedMiniatureUrl}"
+    [src]="miniatureUrl" 
+    (click)="selectMiniatureUrl(miniatureUrl)"
+    />
+</div>

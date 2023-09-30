@@ -1,0 +1,11 @@
+@import '../../../../styles.scss';
+
+.miniature-url-selector {
+  display: flex;
+  flex-direction: row;
+
+  .selected {
+    border: 3px solid $primary-color;
+    border-radius: 4px;
+  }
+}

@@ -1,0 +1,33 @@
+<div class="header-container">
+  <div class="left">
+  </div>
+  <div class="mid">
+    
+  </div>
+  <div class="right">
+    <pixel-span *ngIf="account" [text]="account"></pixel-span>
+    <div *ngIf="status === metamaskConnectionStatus.Connecting">
+      <pixel-loader></pixel-loader>
+    </div>
+   
+    <!--ngIf="status === MetamaskConnectionStatus.Connecting"-->
+    
+    <div  style="padding-left: 10px">
+      <pixel-button 
+        *ngIf="status !== metamaskConnectionStatus.Connected"
+        [disabled]="status === metamaskConnectionStatus.Connecting"
+        [text]="'Connect'"
+        (clickButton)="connectClicked()">
+      </pixel-button>
+
+      <pixel-button
+        *ngIf="status === metamaskConnectionStatus.Connected"
+        [text]="'Disconnect'"
+        (clickButton)="disconnectClicked()"></pixel-button>
+    </div>
+  </div>
+  
+  
+  
+  
+</div>
