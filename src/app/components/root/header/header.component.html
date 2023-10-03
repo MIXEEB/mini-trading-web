@@ -1,17 +1,21 @@
 <div class="header-container">
   <div class="left">
   </div>
+
   <div class="mid">
-    
+    <pixel-button *ngFor="let navigationButton of navigationButtons" 
+      [text]="navigationButton.name"
+      [selected]="pathSelected(navigationButton.path)"
+      (click)="changePath(navigationButton.path)">
+    </pixel-button>
   </div>
+  
   <div class="right">
-    <pixel-span *ngIf="account" [text]="account"></pixel-span>
+    <pixel-span *ngIf="account" [text]="account" [short]="true"></pixel-span>
     <div *ngIf="status === metamaskConnectionStatus.Connecting">
       <pixel-loader></pixel-loader>
     </div>
    
-    <!--ngIf="status === MetamaskConnectionStatus.Connecting"-->
-    
     <div  style="padding-left: 10px">
       <pixel-button 
         *ngIf="status !== metamaskConnectionStatus.Connected"
@@ -26,8 +30,4 @@
         (clickButton)="disconnectClicked()"></pixel-button>
     </div>
   </div>
-  
-  
-  
-  
 </div>

@@ -5,3 +5,10 @@
   font-size: 16px;
   color: $primary-color;
 }
+
+.pixel-span-short {
+  display: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 125px;
+}

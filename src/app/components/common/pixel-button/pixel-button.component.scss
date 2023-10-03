@@ -11,6 +11,12 @@
   cursor: pointer;
 }
 
+.pixel-button-selected {
+  background-color: #ff8c00;
+  color: #1e1e1e;
+  border: 2px solid #1e1e1e;
+}
+
 .pixel-button:disabled {
   cursor: default;
   color: grey;

@@ -1,1 +1,7 @@
-<button [disabled]="disabled" (click)="clickButton.emit()" class="pixel-button">{{text}}</button>
+<button 
+  [disabled]="disabled"
+  (click)="clickButton.emit()"
+  class="pixel-button"
+  [ngClass]="{'pixel-button-selected': selected}">
+  {{text}}
+</button>

@@ -8,5 +8,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class PixelButtonComponent {
   @Input() disabled: boolean = false;
   @Input() text!: string;
+  @Input() selected: boolean = false;
   @Output() clickButton = new EventEmitter<void>();
 }

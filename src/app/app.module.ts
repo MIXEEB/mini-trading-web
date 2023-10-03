@@ -12,6 +12,9 @@ import { MiniatureGalleryComponent } from './components/poc/miniature-gallery/mi
 import { RootComponent } from './components/root/root.component';
 import { HeaderComponent } from './components/root/header/header.component';
 import { PixelLoaderComponent } from './components/common/pixel-loader/pixel-loader.component';
+import { GalleryComponent } from './components/core/gallery/gallery.component';
+import { MyCollectionComponent } from './components/core/my-collection/my-collection.component';
+import { MintingComponent } from './components/core/minting/minting.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { PixelLoaderComponent } from './components/common/pixel-loader/pixel-loa
     MiniatureGalleryComponent,
     RootComponent,
     HeaderComponent,
-    PixelLoaderComponent
+    PixelLoaderComponent,
+    GalleryComponent,
+    MyCollectionComponent,
+    MintingComponent
   ],
   imports: [
     BrowserModule,
