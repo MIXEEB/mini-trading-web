@@ -1,19 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { MiniatureData } from 'src/app/models/miniature-data.interface';
+import { GalleryService } from 'src/app/service/gallery.service';
 import { Web3Service } from 'src/app/service/web3.service';
 
 @Component({
-  selector: 'app-gallery',
+  selector: 'gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, OnDestroy {
 
-    constructor(private web3Service: Web3Service) {
+    miniatures: any[] = [];
+    componentDestroyed$: Subject<boolean> = new Subject();
+
+    constructor(private galleryService: GalleryService) {}
+
+    ngOnInit(): void {
+      this.galleryService.getGallery()
+        .pipe(
+          takeUntil(this.componentDestroyed$)
+        )
+        .subscribe((miniatures: MiniatureData[]) => {
+          this.miniatures = miniatures;
+        }
+      );
     }
-  
-    ngOnInit() {
-      this.web3Service
-        .getGallery()
-        .subscribe();
+
+    ngOnDestroy(): void {
+      this.componentDestroyed$.next(true);
     }
 }

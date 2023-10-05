@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, from, of } from 'rxjs';
+import { Observable, from, map, of, tap } from 'rxjs';
 import Web3, { Contract } from 'web3';
 import TradableMiniature from '../../assets/abi/TradableMiniature.json';
+import { MiniatureData } from '../models/miniature-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,27 +31,42 @@ export class Web3Service {
 
   connectToMetamask(): Observable<string[]> {
     const requestAccount = this.web3.eth.requestAccounts();
-    const observable = from(requestAccount);
-
-    return observable;
-  }
-
-  getAllMiniatures(){ 
-
-    /*
-    (contract.methods as any).getAllMiniatures().call()
-      .then((miniatures: any) => {
-        miniatures.forEach((miniature: any) => {
-          this.miniatures.push({
-            name: miniature.name,
-            miniatureUrl: miniature.url,
-            price: miniature.price
-          })
-          this.miniatures = [...this.miniatures];
+    return from(requestAccount)
+      .pipe(
+        tap(accounts => {
+          if (accounts.length !== 0) {
+            this.connectedAccount = accounts[0];
+          }  
         })
-      })
-      */
+      )
   }
 
+  disconnectFromMetamask() {
+    this.connectedAccount = '';
+  }
 
+  getAllMiniatures(): Observable<MiniatureData[]> { 
+    return (from((this.contract.methods as any).getAllMiniatures().call()) as Observable<any>)
+      .pipe(map(this.mapMiniatureData)
+    )
+  }
+
+  getOwnedMiniatures(): Observable<MiniatureData[]> {
+    return (from((this.contract.methods as any).getOwnedMiniatures().call()) as Observable<any>)
+      .pipe(map(this.mapMiniatureData)
+    )
+  }
+
+  private mapMiniatureData(miniatures: any): MiniatureData[] {
+    if (miniatures?.length) {
+      return (miniatures?.map((miniature: any) => {
+        return {
+          name: miniature.name,
+          miniatureUrl: miniature.url,
+          price: miniature.price
+        }
+      }));
+    }
+    return [];
+  }
 }

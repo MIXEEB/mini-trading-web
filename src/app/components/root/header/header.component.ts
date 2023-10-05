@@ -33,13 +33,11 @@ export class HeaderComponent implements OnDestroy{
 
   connectClicked() {
     this.status = MetamaskConnectionStatus.Connecting;
-    this.connectSubscription = this.web3Service.connectToMetamask().subscribe(accounts => {
-      if (accounts?.length) {
+    this.connectSubscription = this.web3Service.connectToMetamask()
+      .subscribe(() => {
         this.status = MetamaskConnectionStatus.Connected;
-        this.web3Service.connectedAccount = this.account;
-        this.account = accounts[0];
-      }
-    });
+        this.account = this.web3Service.connectedAccount;
+      });
   }
 
   changePath(path: string) {
@@ -50,7 +48,7 @@ export class HeaderComponent implements OnDestroy{
     this.account = "";
     this.status = MetamaskConnectionStatus.Disconnected;
     this.connectSubscription.unsubscribe();
-    this.web3Service.connectedAccount = '';
+    this.web3Service.disconnectFromMetamask();
   }
 
   ngOnDestroy(): void {

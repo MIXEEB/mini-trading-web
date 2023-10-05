@@ -1,0 +1,22 @@
+.miniature-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.gallery-item {
+  flex: 1;
+  max-width: calc(33.33% - 20px); 
+  box-sizing: border-box;
+  overflow: hidden; 
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+}

@@ -8,7 +8,6 @@ import { PixelSpanComponent } from './components/common/pixel-span/pixel-span.co
 import { MiniatureUrlSelectorComponent } from './components/poc/miniature-url-selector/miniature-url-selector.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MiniatureCardComponent } from './components/poc/miniature-card/miniature-card.component';
-import { MiniatureGalleryComponent } from './components/poc/miniature-gallery/miniature-gallery.component';
 import { RootComponent } from './components/root/root.component';
 import { HeaderComponent } from './components/root/header/header.component';
 import { PixelLoaderComponent } from './components/common/pixel-loader/pixel-loader.component';
@@ -23,7 +22,6 @@ import { MintingComponent } from './components/core/minting/minting.component';
     PixelSpanComponent,
     MiniatureUrlSelectorComponent,
     MiniatureCardComponent,
-    MiniatureGalleryComponent,
     RootComponent,
     HeaderComponent,
     PixelLoaderComponent,
