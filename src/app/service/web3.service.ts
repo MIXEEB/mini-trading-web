@@ -52,7 +52,9 @@ export class Web3Service {
   }
 
   getOwnedMiniatures(): Observable<MiniatureData[]> {
-    return (from((this.contract.methods as any).getOwnedMiniatures().call()) as Observable<any>)
+    return (from((this.contract.methods as any).getOwnedMiniatures().call({
+      from: this.connectedAccount
+    })) as Observable<any>)
       .pipe(map(this.mapMiniatureData)
     )
   }
