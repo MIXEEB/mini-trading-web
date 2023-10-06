@@ -51,6 +51,14 @@ export class HeaderComponent implements OnDestroy{
     this.web3Service.disconnectFromMetamask();
   }
 
+  isDisabled(name: string) {
+    if (name === 'My Collection') {
+      return !this.web3Service.connectedAccount 
+    }
+
+    return false;
+  }
+
   ngOnDestroy(): void {
     this.connectSubscription.unsubscribe();
   }

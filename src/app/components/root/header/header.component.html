@@ -5,6 +5,7 @@
   <div class="mid">
     <pixel-button *ngFor="let navigationButton of navigationButtons" 
       [text]="navigationButton.name"
+      [disabled]="isDisabled(navigationButton.name)"
       [selected]="pathSelected(navigationButton.path)"
       (click)="changePath(navigationButton.path)">
     </pixel-button>

@@ -51,7 +51,27 @@ export class Web3Service {
     )
   }
 
+  listenToMiniatureMintedEvent(): Observable<MiniatureData> {
+    return new Observable((observer) => {
+      this.contract.events["Minted"]()
+        .on('data', (event: any) => {        
+          const data = event.returnValues;
+          const newMiniature: MiniatureData = {
+            name: data.name,
+            miniatureUrl: data.url,
+            price: data.price,
+          }
+          observer.next(newMiniature);
+        }
+      );  
+    })
+  }
+  
   getOwnedMiniatures(): Observable<MiniatureData[]> {
+    if (!this.connectedAccount) {
+      return of([]);
+    }
+
     return (from((this.contract.methods as any).getOwnedMiniatures().call({
       from: this.connectedAccount
     })) as Observable<any>)
