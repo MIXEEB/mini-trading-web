@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { MiniatureData } from 'src/app/models/miniature-data.interface';
-import { GalleryService } from 'src/app/service/gallery.service';
 import { Web3Service } from 'src/app/service/web3.service';
 
 @Component({

@@ -51,7 +51,7 @@ export class Web3Service {
     )
   }
 
-  listenToMiniatureMintedEvent(): Observable<MiniatureData> {
+  listenToMiniatureMintedEvent(): Observable<MiniatureData[]> {
     return new Observable((observer) => {
       this.contract.events["Minted"]()
         .on('data', (event: any) => {        
@@ -61,7 +61,7 @@ export class Web3Service {
             miniatureUrl: data.url,
             price: data.price,
           }
-          observer.next(newMiniature);
+          observer.next([newMiniature]);
         }
       );  
     })
