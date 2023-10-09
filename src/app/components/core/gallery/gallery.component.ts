@@ -28,6 +28,16 @@ export class GalleryComponent implements OnInit, OnDestroy {
       });
     }
 
+    buyMiniature(miniatureData: MiniatureData) {
+      if (miniatureData.index === undefined) {
+        return;
+      }
+      this.web3Service.buyMiniature(miniatureData.index)
+        .subscribe((response) => {
+          console.log('miniature purchased', response);
+        })
+    }
+
     ngOnDestroy(): void {
       this.componentDestroyed$.next(true);
     }

@@ -47,8 +47,20 @@ export class Web3Service {
 
   getAllMiniatures(): Observable<MiniatureData[]> { 
     return (from((this.contract.methods as any).getAllMiniatures().call()) as Observable<any>)
-      .pipe(map(this.mapMiniatureData)
-    )
+      .pipe(map(this.mapMiniatureData))
+  }
+
+  buyMiniature(index: number): Observable<any> {
+    const data = (this.contract.methods as any).buyMiniature(index).encodeABI(); 
+
+    return from(this.web3.eth.sendTransaction({
+      from: this.connectedAccount,
+      to: this.contractAddress,
+      data: data,
+      gas: 3000000,
+      gasLimit: 3000000,
+      value: 1//wei
+    }));
   }
 
   listenToMiniatureMintedEvent(): Observable<MiniatureData[]> {
@@ -81,8 +93,9 @@ export class Web3Service {
 
   private mapMiniatureData(miniatures: any): MiniatureData[] {
     if (miniatures?.length) {
-      return (miniatures?.map((miniature: any) => {
+      return (miniatures?.map((miniature: any, index: number) => {
         return {
+          index,
           name: miniature.name,
           miniatureUrl: miniature.url,
           price: miniature.price
