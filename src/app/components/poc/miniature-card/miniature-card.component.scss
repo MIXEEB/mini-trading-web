@@ -1,8 +1,15 @@
 @import '../../../../styles.scss';
 
 .miniature-card {
-  border: 3px solid $primary-color;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.miniature-card.not-owned { 
+  border: 3px solid $primary-color;
+}
+
+.miniature-card.owned {
+  border: 3px solid $secondary-color;
 }

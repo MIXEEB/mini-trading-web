@@ -1,4 +1,4 @@
 
 <div class="miniature-gallery">
-  <miniature-card *ngFor="let miniature of miniatures" [miniatureData]="miniature" (buy)="buyMiniature($event)"></miniature-card>
+  <miniature-card *ngFor="let miniature of miniatures" [miniatureData]="miniature" (buy)="buyMiniature($event)" [owner]="connectedAccount"></miniature-card>
 </div>

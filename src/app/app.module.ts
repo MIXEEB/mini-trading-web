@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { PixelButtonComponent } from './components/common/pixel-button/pixel-button.component';
 import { PixelSpanComponent } from './components/common/pixel-span/pixel-span.component';
 import { MiniatureUrlSelectorComponent } from './components/poc/miniature-url-selector/miniature-url-selector.component';
@@ -17,7 +16,6 @@ import { MintingComponent } from './components/core/minting/minting.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     PixelButtonComponent,
     PixelSpanComponent,
     MiniatureUrlSelectorComponent,

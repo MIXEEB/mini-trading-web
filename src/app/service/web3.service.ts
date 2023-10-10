@@ -72,6 +72,7 @@ export class Web3Service {
             name: data.name,
             miniatureUrl: data.url,
             price: data.price,
+            owner: data.owner
           }
           observer.next([newMiniature]);
         }
@@ -98,7 +99,8 @@ export class Web3Service {
           index,
           name: miniature.name,
           miniatureUrl: miniature.url,
-          price: miniature.price
+          price: miniature.price,
+          owner: miniature.owner
         }
       }));
     }

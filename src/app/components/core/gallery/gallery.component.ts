@@ -13,6 +13,10 @@ export class GalleryComponent implements OnInit, OnDestroy {
     miniatures: any[] = [];
     componentDestroyed$: Subject<boolean> = new Subject();
 
+    get connectedAccount(): string {
+      return this.web3Service.connectedAccount;
+    } 
+
     constructor(
       private web3Service: Web3Service,
       private cdr: ChangeDetectorRef

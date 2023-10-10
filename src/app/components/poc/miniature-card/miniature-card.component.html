@@ -1,5 +1,5 @@
-<div class="miniature-card">
+<div class="miniature-card" [ngClass]="{'not-owned': !owned, 'owned': owned}">
   <pixel-span [text]="miniatureData.name"></pixel-span>
   <img [src]="miniatureData.miniatureUrl"/>
-  <pixel-button [text]="'Buy'" (clickButton)="buy.emit(miniatureData)"></pixel-button>
+  <pixel-button *ngIf="!owned" [text]="'Buy'" (clickButton)="buy.emit(miniatureData)"></pixel-button>
 </div>
