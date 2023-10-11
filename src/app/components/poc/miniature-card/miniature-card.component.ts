@@ -16,7 +16,13 @@ export class MiniatureCardComponent {
   @Output()
   buy: EventEmitter<MiniatureData> = new EventEmitter<MiniatureData>();
 
+  preview: boolean = false;
+
   get owned(): boolean {
     return this.owner.toLocaleLowerCase() === this.miniatureData.owner.toLocaleLowerCase();
+  }
+
+  togglePreview() {
+    this.preview = !this.preview;
   }
 }

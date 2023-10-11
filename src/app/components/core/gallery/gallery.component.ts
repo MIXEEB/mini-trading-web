@@ -27,7 +27,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
         this.web3Service.getAllMiniatures(),
         this.web3Service.listenToMiniatureMintedEvent()
       ).subscribe((miniatures: MiniatureData[]) => {
-        this.miniatures = [...this.miniatures, ...miniatures];
+        this.miniatures = [...this.miniatures, ...miniatures];//.filter((miniature) => miniature.owner !== this.connectedAccount);
         this.cdr.detectChanges();
       });
     }

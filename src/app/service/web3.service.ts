@@ -70,6 +70,7 @@ export class Web3Service {
           const data = event.returnValues;
           const newMiniature: MiniatureData = {
             name: data.name,
+            description: data.description,
             miniatureUrl: data.url,
             price: data.price,
             owner: data.owner
@@ -90,6 +91,23 @@ export class Web3Service {
     })) as Observable<any>)
       .pipe(map(this.mapMiniatureData)
     )
+  }
+
+  mintMiniature(miniature: MiniatureData): Observable<any> {
+    const data = (this.contract.methods as any).createMiniature(
+      miniature.name,
+      miniature.description,
+      miniature.miniatureUrl,
+      miniature.price
+    ).encodeABI(); 
+
+    return from(this.web3.eth.sendTransaction({
+      from: this.connectedAccount,
+      to: this.contractAddress,
+      data: data,
+      gas: 3000000,
+      gasLimit: 3000000
+    }));
   }
 
   private mapMiniatureData(miniatures: any): MiniatureData[] {

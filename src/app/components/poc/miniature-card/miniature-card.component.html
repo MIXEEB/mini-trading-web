@@ -1,5 +1,11 @@
 <div class="miniature-card" [ngClass]="{'not-owned': !owned, 'owned': owned}">
   <pixel-span [text]="miniatureData.name"></pixel-span>
-  <img [src]="miniatureData.miniatureUrl"/>
-  <pixel-button *ngIf="!owned" [text]="'Buy'" (clickButton)="buy.emit(miniatureData)"></pixel-button>
+  <img class="card-image" [src]="miniatureData.miniatureUrl" (click)="togglePreview()"/> 
+  <pixel-button class="pd-bt-4" *ngIf="!owned" [text]="'Buy'" (clickButton)="buy.emit(miniatureData)"></pixel-button>
+  <pixel-span class="pd-tp-16 pd-bt-4" [text]="'owned'" *ngIf="owned"></pixel-span>
+
+  <div *ngIf="preview" class="dialog" id="dialog" (click)="togglePreview()">
+    <img [src]="miniatureData.miniatureUrl" class="fullsize">
+    <pixel-button [text]="'Close'" (clickButton)="togglePreview()"></pixel-button>
+  </div>
 </div>

@@ -4,6 +4,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .card-image {
+    max-width: 250px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .pd-tp-16 {
+    padding-top: 16px;
+  }  
+
+  .pd-bt-4 {
+    padding-bottom: 4px;
+  }
 }
 
 .miniature-card.not-owned { 
@@ -12,4 +26,26 @@
 
 .miniature-card.owned {
   border: 3px solid $secondary-color;
+}
+
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fullsize {
+  max-width: 90%;
+  max-height: 90%;
+  margin: 10px auto;
+  display: block;
 }
