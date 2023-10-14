@@ -1,1 +1,10 @@
-<p>minting works!</p>
+<div class="minting-form" [formGroup]="miniatureForm">
+
+  <input class="pixel-input" placeholder="Name" formControlName="name">
+  <input class="pixel-input" placeholder="Description" formControlName="description">
+  <input class="pixel-input" placeholder="Url" formControlName="miniatureUrl">
+  <input class="pixel-input" placeholder="Price in wei" formControlName="price">
+
+  <pixel-button [text]="'Mint'" (clickButton)="mint()"></pixel-button>
+
+</div>
