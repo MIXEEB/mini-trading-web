@@ -7,4 +7,7 @@
 
   <pixel-button [text]="'Mint'" (clickButton)="mint()"></pixel-button>
 
+  <input class="pixel-input" placeholder="Batch size" [formControl]="batchSize">
+  <pixel-button [text]="'Testing: Mint Batch'" (clickButton)="mintBatch()"></pixel-button>
+
 </div>

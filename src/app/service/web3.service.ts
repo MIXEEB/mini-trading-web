@@ -11,7 +11,7 @@ export class Web3Service {
   private web3!: Web3;
   private contract!: Contract<any>;
   //ToDo: dynamic convinient way to update contract address
-  contractAddress: string = '0x0933A336E7adcAD65bffD394c9EFFa5c0fB3447F';
+  contractAddress: string = '0x8ab9fdf5addf07ef58af37d4ebc0dadd5cd08f6d';
   connectedAccount: string = '';
 
   constructor() { 
@@ -107,6 +107,22 @@ export class Web3Service {
       data: data,
       gas: 3000000,
       gasLimit: 3000000
+    }));
+  }
+
+  mintMiniatureBatch(miniatures: MiniatureData[]): Observable<any> {
+    const data = (this.contract.methods as any).createMiniaturesBatch(
+      miniatures.map(miniature => miniature.name),
+      miniatures.map(miniature => miniature.description),
+      miniatures.map(miniature => miniature.miniatureUrl),
+      miniatures.map(miniature => miniature.price)
+    ).encodeABI(); 
+
+    return from(this.web3.eth.sendTransaction({
+      from: this.connectedAccount,
+      to: this.contractAddress,
+      data: data,
+      gas: 3000000
     }));
   }
 

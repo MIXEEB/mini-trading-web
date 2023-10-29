@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MiniatureData } from 'src/app/models/miniature-data.interface';
 import { Web3Service } from 'src/app/service/web3.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { Web3Service } from 'src/app/service/web3.service';
 })
 export class MintingComponent {
   miniatureForm: FormGroup;
+
+  batchSize: FormControl = new FormControl(1);
 
   constructor(private web3Service: Web3Service) {
     this.miniatureForm = new FormGroup({
@@ -22,9 +25,26 @@ export class MintingComponent {
   mint() {
     this.web3Service.mintMiniature(this.miniatureForm.value)
       .subscribe((response) => {
-        debugger
         console.log(response);
       });
+  }
+
+  mintBatch() { 
+    const batch: MiniatureData[] = [];
+    for (let i = 0; i < this.batchSize.value; i++) {
+      batch.push({
+        name: "name" + i,
+        description: "description" + i,
+        miniatureUrl: ".assets/miniatures/bot.png" + i,
+        price: 1,
+        owner: ""
+      })
+    }
+
+    this.web3Service.mintMiniatureBatch(batch)
+      .subscribe((response) => {
+        console.log(response)
+      })
   }
 
 }
